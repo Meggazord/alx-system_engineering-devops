@@ -1,0 +1,2 @@
+#!/bin/bash
+for f in *.html do [ ! -e "../$f" ] || [ "$f" -nt "../$f" ] && cp "$f" "../$f" done

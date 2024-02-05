@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This script stops the 4-to_infinity_and_beyond process without using signals or kill.
+
+if pgrep -f "4-to_infinity_and_beyond" > /dev/null; then
+    pkill -f "4-to_infinity_and_beyond"
+    echo "Terminated"
+else
+    echo "Process not found"
+fi

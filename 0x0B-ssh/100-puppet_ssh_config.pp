@@ -1,4 +1,4 @@
-# Do the ssh configuration file
+# manage the sshd configuration for the server
 include stdlib
 file_line { 'Declare identity file':
   ensure  => present,

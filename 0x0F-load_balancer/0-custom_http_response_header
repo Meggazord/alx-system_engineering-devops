@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This script configures Nginx to include a custom HTTP response header
+
+apt-get update
+apt-get install -y nginx
+hostname=$(hostname)
+echo "add_header X-Served-By $hostname;" >> /etc/nginx/nginx.conf
+service nginx restart

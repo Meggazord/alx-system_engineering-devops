@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # This script installs and configures HAProxy on a new Ubuntu machine
 
+
 apt-get update
 apt-get install -y haproxy
 cat <<EOF > /etc/haproxy/haproxy.cfg

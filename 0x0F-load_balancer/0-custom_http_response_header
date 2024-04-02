@@ -4,5 +4,5 @@
 apt-get update
 apt-get install -y nginx
 hostname=$(hostname)
-echo "add_header X-Served-By $hostname;" >> /etc/nginx/nginx.conf
+echo "add_header X-Served-By $hostname;" | tee -a /etc/nginx/nginx.conf
 service nginx restart

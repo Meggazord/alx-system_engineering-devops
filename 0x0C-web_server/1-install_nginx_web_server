@@ -1,0 +1,24 @@
+#!/bin/bash
+# Install nginx
+
+apt-get update
+apt-get install -y nginx
+sed -i '/^\s*listen\s\+80;/ c\listen 80;' /etc/nginx/sites-available/default
+service nginx restart
+nginx_pid=$(pgrep nginx)
+if [ -z "$nginx_pid" ]; then
+    echo "Failed to start nginx. Please check the nginx logs for more information."
+    exit 1
+fi
+
+echo "<html>" > /var/www/html/index.html
+echo "Hello World!" >> /var/www/html/index.html
+echo "</html>" >> /var/www/html/index.html
+
+response=$(curl -s localhost)
+if [[ $response != *"Hello World!"* ]]; then
+    echo "Nginx is not serving the expected content. Please check the configuration."
+    exit 1
+fi
+
+echo "Nginx installed and configured successfully!"

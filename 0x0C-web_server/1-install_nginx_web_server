@@ -1,8 +1,8 @@
 #!/bin/bash
 # Install nginx
 
-apt-get update
-apt-get install -y nginx
+sudo apt-get update
+sudo apt-get install -y nginx
 sed -i '/^\s*listen\s\+80;/ c\listen 80;' /etc/nginx/sites-available/default
 service nginx restart
 nginx_pid=$(pgrep nginx)

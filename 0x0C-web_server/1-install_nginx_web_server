@@ -1,21 +1,7 @@
 #!/usr/bin/env bash
+#!/usr/bin/env bash
 # Bash script to install and configure Nginx server
 sudo apt update
 sudo apt install nginx -y
-if [ $? -ne 0 ]; then
-    echo "Error: Nginx installation failed."
-    exit 1
-fi
-sudo sed -i 's|^\s*location / {|&\n        return 200 "Hello World!\\n";|' /etc/nginx/sites-available/default
+sudo sed -i 's|^\s*location / {|&\n return 200 "Hello World!\\n";|' /etc/nginx/sites-available/default
 sudo service nginx restart
-netstat -tuln | grep ':80' > /dev/null
-if [ $? -ne 0 ]; then
-    echo "Error: Nginx is not listening on port 80."
-    exit 1
-fi
-curl -s localhost | grep -q "Hello World!"
-if [ $? -ne 0 ]; then
-    echo "Error: Nginx does not return 'Hello World!' at the root path."
-    exit 1
-fi
-echo "Nginx installation and configuration completed successfully."

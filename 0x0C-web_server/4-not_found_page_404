@@ -2,7 +2,7 @@
 # Bash script to configure custom 404 page
 sudo apt update
 sudo apt install nginx -y
-echo "<!DOCTYPE html>
+sudo echo "<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Error 404 - Not Found</title>
@@ -11,5 +11,5 @@ echo "<!DOCTYPE html>
     <p>Ceci n'est pas une page.</p>
 </body>
 </html>" | sudo tee /usr/share/nginx/html/404.html
-echo -e "error_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}" | sudo tee -a /etc/nginx/sites-available/default > /dev/null
+sudo echo -e "error_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}" | sudo tee -a /etc/nginx/sites-available/default > /dev/null
 sudo service nginx restart

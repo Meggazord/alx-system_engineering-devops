@@ -11,5 +11,5 @@ echo "<!DOCTYPE html>
     <p>Ceci n'est pas une page.</p>
 </body>
 </html>" | sudo tee /usr/share/nginx/html/404.html
-sudo sed -i '/location \/ {/a \ \ \ \ error_page 404 /404.html;\n \ \ \ \ location = /404.html {\n \ \ \ \ \ \ \ \ root /usr/share/nginx/html;\n \ \ \ \ \ \ \ \ internal;\n \ \ \ \ }' /etc/nginx/sites-available/default
+echo -e "error_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}" | sudo tee -a /etc/nginx/sites-available/default > /dev/null
 sudo service nginx restart

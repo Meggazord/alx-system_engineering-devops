@@ -1,35 +1,25 @@
-# puppet file to install custom http_response_header
+# Define a custom fact to retrieve the server's hostname
 
-exec { 'apt_update':
-  command => '/usr/bin/apt update',
-}
+Facter.add('server_hostname') do
+  setcode 'hostname'
+end
 
 package { 'nginx':
   ensure => installed,
 }
 
-$hostname = $facts['hostname']
-
-$nginx_config_content = @(EOF)
-server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-
-    root /var/www/html;
-    index index.html index.htm index.nginx-debian.html;
-
-    server_name _;
-
-    location / {
-        try_files $uri $uri/ =404;
-        add_header X-Served-By ${hostname};
-    }
-}
-EOF
-
 file { '/etc/nginx/sites-available/default':
-  ensure  => present,
-  content => $nginx_config_content,
+  ensure  => file,
+  content => "server {
+                listen 80 default_server;
+                listen [::]:80 default_server;
+
+                server_name _;
+
+                location / {
+                    add_header X-Served-By $::server_hostname;
+                }
+            }",
   notify  => Service['nginx'],
 }
 

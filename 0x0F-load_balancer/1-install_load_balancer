@@ -15,5 +15,5 @@ backend servers
 
 EOF
 
-service enable haproxy
-service restart haproxy
+sudo systemctl enable haproxy
+sudo systemctl restart haproxy

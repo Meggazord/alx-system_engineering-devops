@@ -2,7 +2,7 @@
 # Install HAProxy
 
 sudo apt update
-sudo apt install -y haproxy
+sudo apt install haproxy -y
 sudo tee /etc/haproxy/haproxy.cfg > /dev/null <<EOF
 frontend http-in
     bind *:80
@@ -15,5 +15,5 @@ backend servers
 
 EOF
 
-sudo systemctl enable haproxy
-sudo systemctl restart haproxy
+service enable haproxy
+service restart haproxy

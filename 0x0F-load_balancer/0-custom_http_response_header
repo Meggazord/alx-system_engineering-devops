@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Install customer header
-sudo apt-get update
-sudo apt-get install -y nginx
+sudo apt update
+sudo apt install nginx -y
 server_hostname=$(hostname)
 echo "add_header X-Served-By $server_hostname;" | sudo tee -a /etc/nginx/sites-available/default > /dev/null
-sudo systemctl restart nginx
+service nginx restart

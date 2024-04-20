@@ -17,7 +17,7 @@ file { '/etc/nginx/sites-available/default':
                 server_name _;
 
                 location / {
-                    add_header X-Served-By $::server_hostname;
+                    add_header X-Served-By $hostname;
                 }
             }",
   notify  => Service['nginx'],

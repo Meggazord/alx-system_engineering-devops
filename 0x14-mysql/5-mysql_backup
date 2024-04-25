@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # MySQL dump must contain all databases
 # Dump must be named backup.sql
 # Dump must be compressed to a tar.gz archive

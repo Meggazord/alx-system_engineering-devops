@@ -4,4 +4,4 @@
 archive_name="$(date +%m-%d-%Y).tar.gz"
 name=backup.sql
 mysqldump -u root -p"$1" --all-databases > $name
-tar -czvf "$archive_name" $name
+tar -czvf "$archive_name" backup.sql

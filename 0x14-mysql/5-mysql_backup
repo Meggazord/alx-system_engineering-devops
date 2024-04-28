@@ -1,15 +1,6 @@
 #!/usr/bin/env bash
 # MySQL dump must contain all databases
-# Dump must be named backup.sql
-# Dump must be compressed to a tar.gz archive
-# Archive must have the following name format: day-month-year.tar.gz
-# User to connect to the MySQL database must be root
-
-if [ -z "$1" ]; then
-    echo "Usage: $0 <mysql_password>"
-    exit 1
-fi
 
 mysqldump -u root -p"$1" --all-databases > backup.sql
-DATE=$(date +%d-%m-%Y)
-tar -czvf "$DATE.tar.gz" backup.sql
+archive_name="$(date +%m-%d-%Y).tar.gz"
+tar -czvf "$archive_name" backup.sql

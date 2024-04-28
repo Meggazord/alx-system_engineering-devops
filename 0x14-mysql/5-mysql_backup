@@ -13,6 +13,3 @@ fi
 mysqldump -u root -p"$1" --all-databases > backup.sql
 DATE=$(date +%d-%m-%Y)
 tar -czvf "$DATE.tar.gz" backup.sql
-rm backup.sql
-echo "MySQL backup completed: $DATE.tar.gz"
-file "$DATE.tar.gz"

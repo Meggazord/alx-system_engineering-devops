@@ -9,10 +9,6 @@ import requests
 from sys import argv
 
 if __name__ == "__main__":
-    if len(argv) != 2 or not argv[1].isdigit():
-        print("Usage: {} employee_id".format(argv[0]))
-        exit(1)
-
     employee_id = argv[1]
     user_url = 'https://jsonplaceholder.typicode.com/users/{}'.format(employee_id)
     todos_url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(employee_id)
@@ -23,7 +19,7 @@ if __name__ == "__main__":
         user_data = user_response.json()
         todos_data = todos_response.json()
 
-        employee_name = user_data.get('username')
+        employee_name = user_data.get('name')
 
         csv_file_name = '{}.csv'.format(employee_id)
 
@@ -32,5 +28,6 @@ if __name__ == "__main__":
             for task in todos_data:
                 writer.writerow([employee_id, employee_name, task.get('completed'), task.get('title')])
 
+        print("CSV file '{}' has been created.".format(csv_file_name))
     except Exception as e:
         print("An error occurred:", e)

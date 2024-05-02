@@ -33,7 +33,7 @@ if __name__ == "__main__":
             data[employee_id].append({
                 "task": task.get('title'),
                 "completed": task.get('completed'),
-                "username": employee_name
+                "username": employee_name  
             })
 
         with open(json_file_name, mode='w') as json_file:
@@ -42,4 +42,3 @@ if __name__ == "__main__":
         print("JSON file '{}' has been created.".format(json_file_name))
     except Exception as e:
         print("An error occurred:", e)
-        

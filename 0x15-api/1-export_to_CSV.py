@@ -23,10 +23,12 @@ if __name__ == "__main__":
 
         csv_file_name = '{}.csv'.format(employee_id)
 
-        with open(csv_file_name, mode='w') as csv_file:
+        with open(csv_file_name, mode='w', newline="") as csv_file:
             writer = csv.writer(csv_file)
             for task in todos_data:
-                writer.writerow([employee_id, employee_name, task.get('completed'), task.get('title')])
+                task_status = task.get('completed')
+                task_title = task.get('title')
+                writer.writerow([employee_id, employee_name, task_status, task_title])
 
         print("CSV file '{}' has been created.".format(csv_file_name))
     except Exception as e:

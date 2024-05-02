@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     employee_id = argv[1]
     user_url = 'https://jsonplaceholder.typicode.com/users/{}'.format(employee_id)
-    todos_url = 'https://jsonplaceholder.typicode.com/todos?userId={}'.format(employee_id)
+    todos_url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(employee_id)
 
     try:
         user_response = requests.get(user_url)

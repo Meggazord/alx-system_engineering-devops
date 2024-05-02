@@ -28,16 +28,9 @@ if __name__ == "__main__":
         csv_file_name = '{}.csv'.format(employee_id)
 
         with open(csv_file_name, mode='w') as csv_file:
-            fieldnames = ['USER_ID', 'USERNAME', 'TASK_COMPLETED_STATUS', 'TASK_TITLE']
-            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-
-            writer.writeheader()
+            writer = csv.writer(csv_file)
             for task in todos_data:
-                writer.writerow({'USER_ID': employee_id,
-                                 'USERNAME': employee_name,
-                                 'TASK_COMPLETED_STATUS': task.get('completed'),
-                                 'TASK_TITLE': task.get('title')})
+                writer.writerow([employee_id, employee_name, task.get('completed'), task.get('title')])
 
-        print("CSV file '{}' has been created.".format(csv_file_name))
     except Exception as e:
         print("An error occurred:", e)

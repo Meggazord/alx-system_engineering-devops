@@ -28,6 +28,11 @@ if __name__ == "__main__":
             for task in todos_data:
                 task_status = task.get('completed')
                 task_title = task.get('title')
-                writer.writerow([employee_id, employee_name, task_status, task_title])
+                writer.writerow([
+                    employee_id, 
+                    employee_name, 
+                    task_status, 
+                    task_title
+                ])
     except Exception as e:
         print("An error occurred:", e)

@@ -19,7 +19,7 @@ if __name__ == "__main__":
         user_data = user_response.json()
         todos_data = todos_response.json()
 
-        employee_name = user_data.get('name')
+        employee_name = user_data.get('username')
 
         csv_file_name = '{}.csv'.format(employee_id)
 

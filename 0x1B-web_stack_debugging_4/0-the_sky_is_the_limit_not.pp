@@ -1,4 +1,4 @@
-# Puppet manifest to optimize Nginx configuration for handling load
+# Puppet handling load for server 
 
 class nginx_config {
     file { '/etc/nginx/nginx.conf':

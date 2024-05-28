@@ -22,6 +22,8 @@ def top_ten(subreddit):
             print(post['data']['title'])
     except ValueError:
         print(None)
+    except:
+        print(None)
 
 if __name__ == '__main__':
         top_ten('crypto')

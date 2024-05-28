@@ -2,7 +2,6 @@
 """
 Recurssive reddit import
 """
-
 import requests
 
 def recurse(subreddit, hot_list=[], after=""):

@@ -11,6 +11,8 @@ def top_ten(subreddit):
     params = {'limit': 10}
     headers = {'user-agent': 'Mozilla/5.0'}
     response = requests.get(url, params=params, headers=headers, allow_redirects=False)
+    if not response:
+        print(None)
     try:
         for num in range(0, 10):
             print(response.json()['data']['children'][num]['data']['title'])

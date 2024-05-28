@@ -6,15 +6,19 @@ import requests
 
 def top_ten(subreddit):
     """Prints the titles of the first 10 hot posts listed for a given subreddit."""
-
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     params = {'limit': 10}
-    headers = {'user-agent': 'Mozilla/5.0'}
-    response = requests.get(url, params=params, headers=headers, allow_redirects=False)
-    if not response:
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    response = requests.get(url, headers=headers, params=params, allow_redirects=False)
+    
+    if response.status_code != 200:
         print(None)
+        return
+    
     try:
-        for num in range(0, 10):
-            print(response.json()['data']['children'][num]['data']['title'])
-    except:
+        data = response.json()
+        posts = data['data']['children']
+        for post in posts:
+            print(post['data']['title'])
+    except ValueError:
         print(None)

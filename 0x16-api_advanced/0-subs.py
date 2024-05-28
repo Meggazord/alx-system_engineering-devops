@@ -4,9 +4,11 @@ Get number of users from Reddit
 """
 
 import requests
+import sys
 
 def number_of_subscribers(subreddit):
     """ Return the number of subscribers to a given subreddit """
+
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     headers = {'User-Agent': 'Mozilla/5.0'}
 
